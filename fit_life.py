@@ -1,3 +1,8 @@
+import sys
+
+sys.stdin.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
+
 WATER_PER_KG = 30  # 30 миллилитров на килограмм
 
 user_name = input("Здравствуйте, подскажите как вас зовут? ")
@@ -13,11 +18,10 @@ while True:  # Проверяем ввел ли пользователь чис�
         print("Попробуй еще раз, введи число")
 
 weight = input("Какой у вас вес в килограммах? ")
-user_weight = int(weight)  # Переводим текс в число
+user_weight = float(weight)  # Переводим текс в число
 
-height = input("Какой у вас рост в сантиметрах? ")
-user_height_cm = int(height)  # Переводим текс в число
-user_height_m = user_height_cm / 100  # Переводим в метры
+height = input("Какой у вас рост в метрах (например 1.8)? ")
+user_height_m = float(height)  # Переводим текс в число
 
 bmi = user_weight / (user_height_m ** 2)  # Рассчет индекса массы тела
 user_bmi = round(bmi, 1)  # Округляем результат

@@ -7,7 +7,7 @@ WATER_PER_KG = 30  # 30 миллилитров на килограмм
 WATER_PER_L = 1000  # Миллилитров в литре воды
 
 while True:
-    user_name = input("Здравствуйте, подскажите как вас зовут? ").strip().title()
+    user_name = input("Здравствуйте, как вас зовут? ").strip().title()
     # Узнаем имя, убираем пробелы и делаем имя с заглавной буквы
     if not user_name:  # Проверяем не пустая ли строка
         print("Вы ничего не ввели. Пожалуйста, попробуйте ещё раз.")
@@ -27,7 +27,8 @@ user_weight = float(input("Какой у вас вес в килограммах
 
 user_height = float(input("Какой у вас рост в метрах (например 1.8)? "))
 
-user_bmi = round(user_weight / (user_height ** 2), 1)  # Рассчет индекса массы тела
+# Рассчет индекса массы тела
+user_bmi = round(user_weight / (user_height ** 2), 1)
 
 water_ml = user_weight * WATER_PER_KG  # Рассчитываем норму воды
 water_l = water_ml / WATER_PER_L  # Переводим в литры

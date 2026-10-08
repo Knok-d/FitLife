@@ -4,30 +4,33 @@ sys.stdin.reconfigure(encoding='utf-8')
 sys.stdout.reconfigure(encoding='utf-8')
 
 WATER_PER_KG = 30  # 30 миллилитров на килограмм
+WATER_PER_L = 1000  # Миллилитров в литре воды
 
-user_name = input("Здравствуйте, подскажите как вас зовут? ")
-user_name = user_name.title()  # Выводим имя с заглавной буквы
-print("Приятно познакомится", user_name)
+while True:
+    user_name = input("Здравствуйте, подскажите как вас зовут? ").strip().title()
+    # Узнаем имя, убираем пробелы и делаем имя с заглавной буквы
+    if not user_name:  # Проверяем не пустая ли строка
+        print("Вы ничего не ввели. Пожалуйста, попробуйте ещё раз.")
+        continue
+    print("Приятно познакомится", user_name)
+    break
 
 while True:  # Проверяем ввел ли пользователь число, а не текст
     age = input("Cколько вам лет? ")
     try:
         user_age = int(age)
         break
-    except ValueError:  # При ошибке, росим попробовать ввести возраст числом
+    except ValueError:  # При ошибке, просим попробовать ввести возраст числом
         print("Попробуй еще раз, введи число")
 
-weight = input("Какой у вас вес в килограммах? ")
-user_weight = float(weight)  # Переводим текс в число
+user_weight = float(input("Какой у вас вес в килограммах? "))
 
-height = input("Какой у вас рост в метрах (например 1.8)? ")
-user_height_m = float(height)  # Переводим текс в число
+user_height = float(input("Какой у вас рост в метрах (например 1.8)? "))
 
-bmi = user_weight / (user_height_m ** 2)  # Рассчет индекса массы тела
-user_bmi = round(bmi, 1)  # Округляем результат
+user_bmi = round(user_weight / (user_height ** 2), 1)  # Рассчет индекса массы тела
 
-water_ml = user_weight * 30  # Рассчитываем норму воды
-water_l = water_ml / 1000  # Переводим в литры
+water_ml = user_weight * WATER_PER_KG  # Рассчитываем норму воды
+water_l = water_ml / WATER_PER_L  # Переводим в литры
 user_water = round(water_l, 1)  # Округляем
 
 print()
